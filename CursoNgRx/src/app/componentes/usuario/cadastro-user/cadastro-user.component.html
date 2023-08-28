@@ -1,1 +1,31 @@
 <p>cadastro-user works!</p>
+
+<div>
+    <form id="myForm" #f="ngForm" (ngSubmit)="addUsuario()">
+        <div class="col-6">
+            <label for="nome">Id</label>
+            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="model.id" >
+        </div>
+
+        <div class="col-6">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="model.nome" >
+        </div>
+
+        <div class="col-6">
+            <label for="idade">Idade</label>
+            <input type="text" class="form-control" id="idade" name="idade" [(ngModel)]="model.idade" >
+        </div>
+        
+        <!--Usar um dropbox no lugar de um input-->
+        <div class="col-6">
+            <label for="perfil">Perfil</label>
+            <input type="text" class="form-control" id="perfil" name="perfil" [(ngModel)]="model.perfil" >
+        </div>
+
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary" >Salvar</button>
+        </div>
+
+    </form>
+</div>

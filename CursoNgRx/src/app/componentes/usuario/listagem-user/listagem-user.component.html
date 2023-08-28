@@ -20,8 +20,8 @@
             <td>{{usuario.nome}}</td>
             <td>{{usuario.idade}}</td>
             <td>{{usuario.perfil}}</td>
-            <td><button (click)="editar(usuario)">Editar</button></td>
-            <td><button (click)="excluir(usuario.id)">Excluir</button></td>
+            <td><button class="btn btn-primary" (click)="editar(usuario)">Editar</button></td>
+            <td><button class="btn btn-danger" (click)="excluir(usuario.id)">Excluir</button></td>
         </tr>
     </tbody>
 </table>
