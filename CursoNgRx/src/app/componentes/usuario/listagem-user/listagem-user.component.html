@@ -1,0 +1,27 @@
+<!--criar uma tabela para listagem de usuarios-->
+
+
+<p>Listagem de Usuários</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>perfil</th>
+            <th>editar</th>
+            <th>excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+        <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.idade}}</td>
+            <td>{{usuario.perfil}}</td>
+            <td><button (click)="editar(usuario)">Editar</button></td>
+            <td><button (click)="excluir(usuario.id)">Excluir</button></td>
+        </tr>
+    </tbody>
+</table>

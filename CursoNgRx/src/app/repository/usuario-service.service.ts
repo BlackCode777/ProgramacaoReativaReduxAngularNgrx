@@ -10,17 +10,17 @@ export class UsuarioServiceService {
   constructor(private http: HttpClient) {}
 
   getUsuarios() {
-    return this.http.get('http://localhost:3000/usuarios');
+    return this.http.get<UsuarioModel[]>('http://localhost:3000/usuarios');
   }
 
   getUsuario(id: number) {
-    return this.http.get('http://localhost:3000/usuarios/' + id);
+    return this.http.get<UsuarioModel[]>('http://localhost:3000/usuarios/' + id);
   }
 
   addUsuario(usuario: UsuarioModel) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post(
+    return this.http.post<UsuarioModel>(
       'http://localhost:3000/usuarios',
       JSON.stringify(usuario),
       { headers: headers }
@@ -30,7 +30,7 @@ export class UsuarioServiceService {
   updateUsuario(usuario: UsuarioModel) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(
+    return this.http.put<UsuarioModel>(
       'http://localhost:3000/usuarios' + usuario.id,
       JSON.stringify(usuario),
       { headers: headers }
