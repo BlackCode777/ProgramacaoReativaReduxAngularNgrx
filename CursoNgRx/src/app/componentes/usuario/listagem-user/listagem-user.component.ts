@@ -26,7 +26,6 @@ export class ListagemUserComponent {
   // @functTimeOutEstudoDECORATOR(6000)
   excluir(id: number) {}
 
-
 }
 
 // Entendendo o funcionamento do decorator @functTimeOutEstudoDECORATOR

@@ -23,6 +23,10 @@ export class CadastroUserComponent {
       this.userService.addUsuario(this.model).subscribe(
         (data) => {
           this.model = data;
+
+          // limpando o formulario de cadastro de usuario
+          //this.model = { id: 0, nome: '', idade: 0, perfil: '' };
+
           console.log(data);
         },
         (error) => {
