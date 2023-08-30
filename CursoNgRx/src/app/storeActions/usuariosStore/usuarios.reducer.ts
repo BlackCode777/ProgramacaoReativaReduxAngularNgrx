@@ -1,9 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 import { UsuarioModel } from '../../models/usuario-model';
 import * as fromUsuariosAction from './usuarios.actions';
 
 // Para guaradar o estado dos usuarios
 export interface UsuariosState {
+  [x: string]: any;
   usuarios: UsuarioModel[];
   usuario: UsuarioModel | null;
   error: string | null;
@@ -75,10 +76,51 @@ const _usuariosReducer = createReducer(
     ...state,
     error: error,
   }))
-
-
 );
 
 export function usuariosReducer(state = initialState, action: Action) {
   return _usuariosReducer(state, action);
 }
+
+// Criando uma chave de acesso para o estado dos usuarios
+export const getUsuariosFeatureState = createFeatureSelector<UsuariosState>('usuarios');
+
+// Criando um seletor para o estado dos usuarios
+export const getUsuarios = createSelector(
+    getUsuariosFeatureState, 
+    (state: UsuariosState) => state.usuarios 
+);
+
+export const getUsuario = createSelector(
+  getUsuariosFeatureState,
+  (state: UsuariosState) => state.usuario
+);
+
+export const getUsuarioErro = createSelector(
+  getUsuariosFeatureState,
+  (state: UsuariosState) => state.error
+);
+
+// Função para filtrar somente os usuarios que tem o perfil de administrador
+export const getUsuariosAdmin = createSelector(
+    getUsuariosFeatureState,
+    (state: UsuariosState) => state.usuarios.filter((usuario) => usuario.perfil === 'admin')
+);
+
+// Função para filtrar somente os usuarios que tem o perfil de gestor
+export const getUsuariosGestor = createSelector(
+    getUsuariosFeatureState,
+    (state: UsuariosState) => state.usuarios.filter((usuario) => usuario.perfil === 'gestor')
+);
+
+// Função para filtrar somente os usuarios que tem o perfil de usuario e com idade acima de 50 anos
+export const getUsuariosUsuario = createSelector(
+    getUsuariosFeatureState,
+    (state: UsuariosState) => state.usuarios.filter((usuario) => usuario.perfil === 'usuario' && usuario.idade > 50)
+);
+
+// Filtrar somente os usuarios que tem o perfil de usuario e com idade acima de 50 anos e com salario acima de 3.000
+// export const getUsuariosUsuarioSalario = createSelector(
+//     getUsuariosFeatureState,
+//     (state: UsuariosState) => state.usuarios.filter((usuario) => usuario.perfil === 'usuario' && usuario.idade > 50 && usuario.salario > 3000)
+// );
