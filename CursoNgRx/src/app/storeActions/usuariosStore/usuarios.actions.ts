@@ -5,14 +5,10 @@ import { UsuarioModel } from 'src/app/models/usuario-model';
 
 /*
 Aqui posso criar calculos, funções, etc...
-
 exemplo:
-
 function functTimeOutEstudoDECORATOR(milliseconds: number) {
     return function (target: any, key: string, descriptor: PropertyDescriptor) {
         const originalMethod = descriptor.value;
-
-    
 */
 
 export const enum UsuariosTypesAction {
@@ -55,7 +51,6 @@ export const LoadUsuariosFail = createAction(
 );
 
 
-
 // Criando as ações  usuario GET
 export const LoadUsuario = createAction(
   UsuariosTypesAction.LOAD_USUARIOS,
@@ -71,7 +66,6 @@ export const LoadUsuarioFail = createAction(
   UsuariosTypesAction.LOAD_USUARIO_FAIL,
   props<{ error: string }>()
 );
-
 
 
 // Criando as ações  usuarios POST
@@ -91,7 +85,6 @@ export const CreateUsuarioFail = createAction(
 );
 
 
-
 // Create update usuario UPDATE
 export const UpdateUsuario = createAction(
   UsuariosTypesAction.UPDATE_USUARIO,
@@ -109,7 +102,6 @@ export const UpdateUsuariosFail = createAction(
 );
 
 
-
 // Delete usuario DELETE
 export const DeleteUsuario = createAction(
   UsuariosTypesAction.DELETE_USUARIO,
@@ -125,3 +117,8 @@ export const DeleteUsuariosFail = createAction(
   UsuariosTypesAction.DELETE_USUARIO_FAIL,
   props<{ error: string }>()
 );
+export const DeleteUsuarioSuccess = createAction(
+  UsuariosTypesAction.DELETE_USUARIO_SUCCESS,
+  props<{ payload: number }>()
+);
+
