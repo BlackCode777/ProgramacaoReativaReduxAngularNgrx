@@ -4,9 +4,8 @@ import * as fromUsuariosAction from './usuarios.actions';
 
 // Para guaradar o estado dos usuarios
 export interface UsuariosState {
-  [x: string]: any;
   usuarios: UsuarioModel[];
-  usuario: UsuarioModel | null;
+  usuario: any | null;
   error: string | null;
 }
 

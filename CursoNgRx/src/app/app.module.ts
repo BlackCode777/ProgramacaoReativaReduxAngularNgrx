@@ -12,7 +12,7 @@ import { CadastroUserComponent } from './componentes/usuario/cadastro-user/cadas
 import { ListagemUserComponent } from './componentes/usuario/listagem-user/listagem-user.component';
 import { MainComponent } from './componentes/usuario/main/main.component';
 import { UsuarioServiceService } from './repository/usuario-service.service';
-import { appEffects, appReducers } from './storeActions/app.state';
+import { appEffects, appReducers } from './Store/app.state';
 
 @NgModule({
   declarations: [
