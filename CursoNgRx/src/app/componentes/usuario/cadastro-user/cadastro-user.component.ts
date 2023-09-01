@@ -25,7 +25,7 @@ export class CadastroUserComponent {
           this.model = data;
 
           // limpando o formulario de cadastro de usuario
-          //this.model = { id: 0, nome: '', idade: 0, perfil: '' };
+          this.model = { id: 0, nome: '', idade: 0, perfil: '' };
 
           console.log(data);
         },

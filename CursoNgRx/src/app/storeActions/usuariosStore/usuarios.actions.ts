@@ -11,7 +11,7 @@ function functTimeOutEstudoDECORATOR(milliseconds: number) {
         const originalMethod = descriptor.value;
 */
 
-export const enum UsuariosTypesAction {
+export const enum UsuariosTypeAction {
   LOAD_USUARIOS = '[LOAD_USUARIOS] Load Usuarios',
   LOAD_USUARIOS_SUCCESS = '[LOAD_USUARIOS_SUCCESS] Load Usuarios Success',
   LOAD_USUARIOS_FAIL = '[LOAD_USUARIOS_FAIL] Load Usuarios Fail',
@@ -39,86 +39,86 @@ export const enum UsuariosTypesAction {
 
 // Criando as ações
 export const LoadUsuarios = createAction(
-    UsuariosTypesAction.LOAD_USUARIOS
+    UsuariosTypeAction.LOAD_USUARIOS
 );
 export const LoadUsuariosSuccess = createAction(
-  UsuariosTypesAction.LOAD_USUARIOS_SUCCESS,
+  UsuariosTypeAction.LOAD_USUARIOS_SUCCESS,
   props<{ payload: UsuarioModel[] }>()
 );
 export const LoadUsuariosFail = createAction(
-  UsuariosTypesAction.LOAD_USUARIOS_FAIL,
+  UsuariosTypeAction.LOAD_USUARIOS_FAIL,
   props<{ error: string }>()
 );
 
 
 // Criando as ações  usuario GET
 export const LoadUsuario = createAction(
-  UsuariosTypesAction.LOAD_USUARIOS,
+  UsuariosTypeAction.LOAD_USUARIO,
   props<{ payload: number }>()
 );
 
 export const LoadUsuarioSuccess = createAction(
-  UsuariosTypesAction.LOAD_USUARIO_SUCCESS,
-  props<{ payload: UsuarioModel }>()
+  UsuariosTypeAction.LOAD_USUARIO_SUCCESS,
+  props<{ payload: UsuarioModel[] }>()
 );
 
 export const LoadUsuarioFail = createAction(
-  UsuariosTypesAction.LOAD_USUARIO_FAIL,
+  UsuariosTypeAction.LOAD_USUARIO_FAIL,
   props<{ error: string }>()
 );
 
 
 // Criando as ações  usuarios POST
 export const CreateUsuario = createAction(
-  UsuariosTypesAction.CREATE_USUARIO,
+  UsuariosTypeAction.CREATE_USUARIO,
   props<{ payload: UsuarioModel }>()
 );
 
 export const CreateUsuarioSuccess = createAction(
-  UsuariosTypesAction.CREATE_USUARIO_SUCCESS,
+  UsuariosTypeAction.CREATE_USUARIO_SUCCESS,
   props<{ payload: UsuarioModel }>()
 );
 
 export const CreateUsuarioFail = createAction(
-  UsuariosTypesAction.CREATE_USUARIO_FAIL,
+  UsuariosTypeAction.CREATE_USUARIO_FAIL,
   props<{ error: string }>()
 );
 
 
 // Create update usuario UPDATE
 export const UpdateUsuario = createAction(
-  UsuariosTypesAction.UPDATE_USUARIO,
+  UsuariosTypeAction.UPDATE_USUARIO,
   props<{ payload: UsuarioModel }>()
 );
 
 export const UpdateUsuariosSuccess = createAction(
-  UsuariosTypesAction.UPDATE_USUARIO_SUCCESS,
+  UsuariosTypeAction.UPDATE_USUARIO_SUCCESS,
   props<{ payload: UsuarioModel }>()
 );
 
 export const UpdateUsuariosFail = createAction(
-  UsuariosTypesAction.UPDATE_USUARIO_FAIL,
+  UsuariosTypeAction.UPDATE_USUARIO_FAIL,
   props<{ error: string }>()
 );
 
 
 // Delete usuario DELETE
 export const DeleteUsuario = createAction(
-  UsuariosTypesAction.DELETE_USUARIO,
+  UsuariosTypeAction.DELETE_USUARIO,
   props<{ payload: number }>()
 );
 
 export const DeleteUsuariosSuccess = createAction(
-  UsuariosTypesAction.DELETE_USUARIO_SUCCESS,
+  UsuariosTypeAction.DELETE_USUARIO_SUCCESS,
   props<{ payload: number }>()
 );
 
 export const DeleteUsuariosFail = createAction(
-  UsuariosTypesAction.DELETE_USUARIO_FAIL,
+  UsuariosTypeAction.DELETE_USUARIO_FAIL,
   props<{ error: string }>()
 );
 export const DeleteUsuarioSuccess = createAction(
-  UsuariosTypesAction.DELETE_USUARIO_SUCCESS,
+  UsuariosTypeAction.DELETE_USUARIO_SUCCESS,
   props<{ payload: number }>()
 );
 
