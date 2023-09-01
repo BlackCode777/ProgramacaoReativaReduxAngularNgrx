@@ -8,9 +8,8 @@ import { AppState } from 'src/app/Store/app.state';
 // import { Store } from '@ngrx/store';
 // import { AppState } from 'src/app/storeActions/app.state';
 // import { UsuarioModel } from 'src/app/models/usuario-model';
-//import * as fromUsuariosAction from '../Store/usuarios/usuarios.actions';
+// import * as fromUsuariosAction from '../Store/usuarios/usuarios.actions';
 import * as fromUsuariosAction from 'src/app/Store/usuarios/usuarios.actions';
-
 import * as fromUsuariosSelector from 'src/app/Store/usuarios/usuarios.reducer';
 
 

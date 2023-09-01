@@ -37,11 +37,11 @@ export class CadastroUserComponent {
   //   if (this.model.id == 0) {
   //     // Se o id do usuário for igual a zero então salva no banco de dados
   //     this.userService.addUsuario(this.model).subscribe(
-  //       //(data) => {
-  //         //this.model = data;
-  //         // limpando o formulario de cadastro de usuario
-  //         //this.model = { id: 0, nome: '', idade: 0, perfil: '' };
-  //         //console.log(data);
+  //       (data) => {
+  //         this.model = data;
+  //          limpando o formulario de cadastro de usuario
+  //         this.model = { id: 0, nome: '', idade: 0, perfil: '' };
+  //         console.log(data);
   //       },
   //       (error) => {
   //         console.log(error);
