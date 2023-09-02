@@ -13,6 +13,7 @@ import { ListagemUserComponent } from './componentes/usuario/listagem-user/lista
 import { MainComponent } from './componentes/usuario/main/main.component';
 import { UsuarioServiceService } from './repository/usuario-service.service';
 import { appEffects, appReducers } from './Store/app.state';
+import { ListaUserAdminComponent } from './componentes/usuario/lista-user-admin/lista-user-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { appEffects, appReducers } from './Store/app.state';
     ListagemUserComponent,
     CadastroUserComponent,
     MainComponent,
+    ListaUserAdminComponent,
   ],
   imports: [
     FormsModule,
