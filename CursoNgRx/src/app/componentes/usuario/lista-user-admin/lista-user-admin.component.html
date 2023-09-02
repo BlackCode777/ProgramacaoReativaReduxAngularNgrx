@@ -1,1 +1,114 @@
 <p>lista-user-admin works!</p>
+
+<p>Listagem de Usuários Admin - jeito 1</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>perfil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+    <tr *ngFor="let usuario of listaUsuarios$ | async">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+
+<p>Listagem de Usuários Admin - jeito 2</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>perfil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+    <tr *ngFor="let usuario of listaUsuarios3">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<p>Listagem de Usuários Admin - jeito 3</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>perfil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+    <tr *ngFor="let usuario of listaUsuarios2">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<p>Listagem de Usuários Admin - jeito 4</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>perfil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+    <tr *ngFor="let usuario of listaUsuarios4">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+
+<p>Listagem de Usuários Admin - jeito 5</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>perfil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+    <tr *ngFor="let usuario of listaUsuarios5$ | async">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+

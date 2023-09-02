@@ -106,6 +106,18 @@ export const getUsuariosAdmin = createSelector(
     (state: UsuariosState) => state.usuarios.filter((usuario) => usuario.perfil === 'admin')
 );
 
+// Função para filtrar somente os usuarios que tem o perfil de administrador
+export const getUsuariosAdministrador = createSelector(
+    getUsuariosFeatureState,
+    (state: UsuariosState) => state.usuarios.filter((usuario) => usuario.perfil === 'administrador')
+);
+
+// Função para filtrar somente os usuarios que tem o perfil de administrador filtrando por parametro passado na função
+export const getUsuariosAdministradorPorParametro = createSelector(
+    getUsuariosFeatureState,
+    (state: UsuariosState, props:{perfil: string}) => state.usuarios.filter((usuario) => usuario.perfil == props.perfil)
+);
+
 // Função para filtrar somente os usuarios que tem o perfil de gestor
 export const getUsuariosGestor = createSelector(
     getUsuariosFeatureState,
