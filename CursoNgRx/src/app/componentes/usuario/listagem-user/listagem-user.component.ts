@@ -44,7 +44,9 @@ export class ListagemUserComponent {
   }
 
   // @functTimeOutEstudoDECORATOR(6000)
-  excluir(id: number) {}
+  excluir(id: number) {
+    this.store.dispatch(fromUsuariosAction.DeleteUsuario({ payload: id })); // Aqui ele pede 1 parametro payload
+  }
 }
 
 // Entendendo o funcionamento do decorator @functTimeOutEstudoDECORATOR
