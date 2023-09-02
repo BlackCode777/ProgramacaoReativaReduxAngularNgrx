@@ -20,14 +20,10 @@ export class CadastroUserComponent {
     
     if(this.model.id == 0){
       console.log("Cadastro %%% ",this.model);
-      this.store.dispatch(
-      fromUsuariosAction.CreateUsuario({ payload: this.model })
-    );
+      this.store.dispatch(fromUsuariosAction.CreateUsuario({ payload: this.model }));
     }else{
       console.log('Atualiza %%% ', this.model);
-      this.store.dispatch(
-        fromUsuariosAction.UpdateUsuario({ payload: this.model })
-      );
+      this.store.dispatch( fromUsuariosAction.UpdateUsuario({ payload: this.model }) );
     }
 
   }

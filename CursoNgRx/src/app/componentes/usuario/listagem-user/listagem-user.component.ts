@@ -22,15 +22,13 @@ export class ListagemUserComponent {
   //public usuarios: UsuarioModel[] = [];
 
   // Implementando o store
-  public listaUsuarios$: Observable<UsuarioModel[]> =
-    this.store.select(fromUsuariosSelector.getUsuarios);
+  public listaUsuarios$: Observable<UsuarioModel[]> = this.store.select( fromUsuariosSelector.getUsuarios );
+  public listaUsuario$: Observable<UsuarioModel | null> = this.store.select( fromUsuariosSelector.getUsuario );
 
   constructor(
     // Injetando o serviço UsuarioServiceService com store
-    private store: Store<AppState>
-  ) //private usuarioService: UsuarioServiceService
-
-  {}
+    private store: Store<AppState> //private usuarioService: UsuarioServiceService
+  ) {}
 
   ngOnInit() {
     // Implementando o store chamando action
@@ -41,7 +39,9 @@ export class ListagemUserComponent {
     // });
   }
 
-  editar(usuario: UsuarioModel) {}
+  editar(id: number) {
+    this.store.dispatch(fromUsuariosAction.LoadUsuario({ payload: id })); // Aqui ele pede 1 parametro payload
+  }
 
   // @functTimeOutEstudoDECORATOR(6000)
   excluir(id: number) {}

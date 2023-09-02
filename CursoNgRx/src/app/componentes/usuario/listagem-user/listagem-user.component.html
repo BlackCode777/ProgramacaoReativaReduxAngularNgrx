@@ -1,27 +1,120 @@
 <!--criar uma tabela para listagem de usuarios-->
 
-
 <p>Listagem de Usuários</p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>perfil</th>
-            <th>editar</th>
-            <th>excluir</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
-        <tr *ngFor="let usuario of listaUsuarios$ | async">
-            <td>{{usuario.id}}</td>
-            <td>{{usuario.nome}}</td>
-            <td>{{usuario.idade}}</td>
-            <td>{{usuario.perfil}}</td>
-            <td><button class="btn btn-primary" (click)="editar(usuario)">Editar</button></td>
-            <td><button class="btn btn-danger" (click)="excluir(usuario.id)">Excluir</button></td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>perfil</th>
+      <th>editar</th>
+      <th>excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let usuario of usuarios$ | async"> -->
+    <tr *ngFor="let usuario of listaUsuarios$ | async">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+
+      <td>
+        <!--Modal-->
+        <button
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          type="button"
+          (click)="editar(usuario.id)"
+        >
+          Editar
+        </button>
+      </td>
+
+      <td>
+        <button class="btn btn-danger" (click)="excluir(usuario.id)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="(listaUsuario$ | async) as usuario">
+          <form id="myForm" #f="ngForm">
+            <div class="col-6">
+              <label for="nome">Id</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                name="id"
+                [(ngModel)]="usuario.id"
+              />
+            </div>
+
+            <div class="col-6">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                name="nome"
+                [(ngModel)]="usuario.nome"
+              />
+            </div>
+
+            <div class="col-6">
+              <label for="idade">Idade</label>
+              <input
+                type="text"
+                class="form-control"
+                id="idade"
+                name="idade"
+                [(ngModel)]="usuario.idade"
+              />
+            </div>
+
+            <!--Usar um dropbox no lugar de um input-->
+            <div class="col-6">
+              <label for="perfil">Perfil</label>
+              <input
+                type="text"
+                class="form-control"
+                id="perfil"
+                name="perfil"
+                [(ngModel)]="usuario.perfil"
+              />
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
+      </div>
+    </div>
+  </div>
+</div>

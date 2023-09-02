@@ -1,3 +1,4 @@
+import { UsuarioModel } from 'src/app/models/usuario-model';
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UsuarioServiceService } from '../../repository/usuario-service.service';
