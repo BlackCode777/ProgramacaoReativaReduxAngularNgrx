@@ -27,7 +27,65 @@ export class ListaUserAdminComponent {
   public listaUsuarios4: UsuarioModel[] = [];
 
   // Implementando o store - jeito 5
-  public listaUsuarios5$: Observable<UsuarioModel[]> = this.store.select(fromUsuariosSelector.getUsuariosAdministradorPorParametro, {perfil: 'administrador'});
+  public listaUsuarios5$: Observable<UsuarioModel[]> = this.store.select(
+    fromUsuariosSelector.getUsuariosAdministradorPorParametro,
+    { perfil: 'administrador' }
+  );
+
+  /*
+  crie uma função que retorna um filtro de 5 elementos de um array, 
+percorre o array inteiro e traz os 5 maiores ocorrências
+  */
+ public ordenaArrayMaiorParaMenorFiltra5PrimeirosElement(array: any[]): any{
+    let maiorOcorrencia: any;
+
+    // Percorre o array inteiro
+    array.forEach((elemento) => {
+      // Verifica se o elemento já existe no objeto
+      if (maiorOcorrencia[elemento.nome]) {
+        maiorOcorrencia[elemento.nome] += 1;
+      } else {
+        maiorOcorrencia[elemento] = 1;
+      }
+    });
+
+    // Ordena o objeto de acordo com o valor
+    let object: any;
+    let ordenado = object.entries(maiorOcorrencia).sort((a: any, b: any) => b - a);
+
+    return ordenado.slice(0, 5);
+
+ }
+
+  // // exemplo de como usar o sort()
+  // public array = [1, 30, 4, 21, 100000];
+  // // ordena o array do maior para o menor
+  // public array1 = this.array.sort((a, b) => b - a);
+  // //array.sort((a, b) => a - b)
+ 
+ // exemplo de como usar o sort()
+  // public lista5MaioresResultadosDoArray2(array: any[]): any{
+  //   let maiorOcorrencia: any;
+
+  //   // Percorre o array inteiro
+  //   array.forEach((elemento) => {
+  //     // Verifica se o elemento já existe no objeto
+  //     if (maiorOcorrencia[elemento]) {
+  //       // Se existir, incrementa o valor
+  //       maiorOcorrencia[elemento] += 1;
+  //     } else {
+  //       // Se não existir, cria o elemento com o valor 1
+  //       maiorOcorrencia[elemento] = 1;
+  //     }
+  //   });
+
+  //   // Ordena o objeto de acordo com o valor
+  //   const ordenado = Object.entries(maiorOcorrencia).sort(
+  //     (a, b) => b[1] - a[1]
+  //   );
+    
+
+  
 
   constructor(
     // Injetando o serviço UsuarioServiceService com store
