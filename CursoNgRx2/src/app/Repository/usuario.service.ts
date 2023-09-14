@@ -6,6 +6,7 @@ import { UsuarioModel } from '../Models/UsuarioModel';
   providedIn: 'root',
 })
 export class UsuarioService {
+  
   constructor(private http: HttpClient) {}
 
   getUsuarios() {
