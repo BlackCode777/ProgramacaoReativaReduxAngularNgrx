@@ -14,24 +14,28 @@ export class BankingComponent {
   constructor() {}
   ngOnInit(): void {}
 
-  get getPoupanca(): number {
+  get getPoupanca(): number{
     return this.poupanca;
   }
-  get getCarteira(): number {
+  get getCarteira(): number | undefined {
     return this.carteira;
   }
 
-  setSacar(valor: string): number {
-    const sacar = Number(valor); // Aqui eu converto a string que vem do html em um number
-    console.log(sacar);
-    return sacar;
-    //this.poupanca -= valor;
+  setSacar(valor: string): number | undefined {
+    const sacar = Number(valor); // Aqui eu converto a string que vem do html em um number    
+    if(isNaN( sacar ) || this.poupanca < sacar ){ // tratamento do NaN
+      return;
+    }
+    this.poupanca -= sacar;
+    return (this.carteira += sacar);
   }
 
-  setDepositar(valor: string): number {
+  setDepositar(valor: string): number | undefined {
     const depositar = Number(valor); // Aqui eu converto a string que vem do html em um number
-    console.log(depositar);
-    return depositar;
-    //this.poupanca += valor;
+    if (isNaN(depositar) || this.poupanca < depositar) {
+      return;
+    }
+    this.carteira -= depositar;
+    return (this.poupanca += depositar);
   }
 }
