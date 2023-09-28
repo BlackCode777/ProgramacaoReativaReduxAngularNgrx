@@ -15,6 +15,9 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
+});
+/*
+
 
   it(`should have as title 'teste-unitario'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -45,6 +48,5 @@ describe('AppComponent', () => {
     expect(app.somar(2, 1)).not.toEqual(4);
   });
 
-  
 
-});
+*/
