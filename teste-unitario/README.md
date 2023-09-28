@@ -1,6 +1,12 @@
+
+
+
 # TesteUnitario
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.8.
+
+## Biblioteca Jasmine
+Referência: [Jasmine](https://jasmine.github.io/)
 
 ## Development server
 

@@ -5,12 +5,8 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -30,15 +26,25 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('teste-unitario app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain(
+      'teste-unitario app is running!'
+    );
   });
 
   // Incluindo no teste a função somar()
-  it('should sum two numbers', () => {
+  it('Teste da função soma()', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.somar(2, 2)).toEqual(4);
   });
 
+  // Incluindo no teste a função somar() para falso positivo
+  it('Teste da função soma() passando valor errado !', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.somar(2, 1)).not.toEqual(4);
+  });
+
+  
 
 });
