@@ -16,7 +16,7 @@ describe('BankingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Deve criar um componente', () => {
     expect(component).toBeTruthy();
   });
 
