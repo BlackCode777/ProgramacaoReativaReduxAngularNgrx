@@ -1,0 +1,18 @@
+<p>
+    <strong>Anderosn sua Agencia:</strong> 
+    {{agencia | currency:'BRL'}}
+</p>
+
+<p>
+    Poupança: R$ {{ getPoupanca }}
+    <input type="text" #sacar >
+    <button (click)="setSacar(sacar.value)">Sacar</button>
+</p>
+<p>
+    Conta Corrente: R$ {{ contaCorrente }}
+</p>
+<p>
+    Carteira: R$ {{ getCarteira }}
+    <input type="text" #depositar >
+    <button (click)="setDepositar(depositar.value)">Depositar</button>
+</p>
