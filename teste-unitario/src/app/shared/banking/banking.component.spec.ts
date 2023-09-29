@@ -38,10 +38,26 @@ describe('BankingComponent', () => {
     expect(component.getPoupanca).toEqual(500);
   });
 
+  // Testando o if dos métodos setSacar() e setDepositar()
+  it('setSacar(): Mostrar que a transferencia de poupanca não pode ser maior que o valor da poupanca', () => {
+    expect(component.setSacar('2000')).not.toBeUndefined();
+    expect(component.setSacar('string')).not.toBeTruthy();
+    expect(component.getPoupanca).toEqual(1000);
+    expect(component.getCarteira).toEqual(3000);
+  });
+
   // Testando a função setDepositar()
   it('Teste da função setDepositar()', () => {
     component.setDepositar('500');
     fixture.detectChanges(); //detectedChanges() é um método que força a atualização do componente
     expect(component.getPoupanca).toEqual(1500);
+  });
+
+  // Testando o if dos métodos setDepositar() e setDepositar()
+  it('setDepositar(): Mostrar que a transfer de carteira não tem string (isNan) ou carteira não pode ser maior que valor', () => {
+    expect(component.setDepositar('2000')).not.toBeUndefined();
+    expect(component.setDepositar('string')).not.toBeTruthy();
+    expect(component.getPoupanca).toEqual(1000);
+    expect(component.getCarteira).toEqual(3000);
   });
 });
