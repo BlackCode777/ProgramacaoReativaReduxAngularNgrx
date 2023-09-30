@@ -31,11 +31,24 @@ describe('BankingComponent', () => {
   });
 
   // Testando a função setSacar()
-  it('Teste da função setSacar()', () => {
+  it('(U) setSacar(): shoud transfer poupanca carteira', () => {
     component.setSacar('500');
     fixture.detectChanges(); //detectedChanges() é um método que força a atualização do componente
     expect(component.getCarteira).toEqual(3500);
     expect(component.getPoupanca).toEqual(500);
+  });
+
+    // Testando a função setDepositar()
+  it('(I) setSacar(): shoud transfer poupanca from carteira', () => {
+    // cria uma variavel do id depositar-depositar
+    let el = fixture.debugElement.nativeElement;
+    el.querySelector("#input-sacar").value = '3000';
+    el.querySelector("#sacar").click();
+    fixture.detectChanges();
+    expect(el.querySelector('#get-carteira').textContent).toEqual('3000');
+    //expect(component.getPoupanca).toEqual(1000);
+    //expect(component.getCarteira).toEqual(3000);
+    //fixture.debugElement.nativeElement.querySelector("depositar").click();
   });
 
   // Testando o if dos métodos setSacar() e setDepositar()
@@ -54,10 +67,25 @@ describe('BankingComponent', () => {
   });
 
   // Testando o if dos métodos setDepositar() e setDepositar()
-  it('setDepositar(): Mostrar que a transfer de carteira não tem string (isNan) ou carteira não pode ser maior que valor', () => {
+  it('(U) setDepositar(): Mostrar que a transfer de carteira não tem string (isNan) ou carteira não pode ser maior que valor', () => {
     expect(component.setDepositar('2000')).not.toBeUndefined();
     expect(component.setDepositar('string')).not.toBeTruthy();
     expect(component.getPoupanca).toEqual(1000);
     expect(component.getCarteira).toEqual(3000);
   });
+
+    // Testando a função setDepositar()
+  it('(I) setDepositar(): shoud transfer carteira from poupanca ', () => {
+    // cria uma variavel do id depositar-depositar
+    let el = fixture.debugElement.nativeElement;
+    el.querySelector("#input-depositar").value = '2000';
+    el.querySelector("#depositar").click();
+    fixture.detectChanges();
+    expect(el.querySelector('#get-poupanca').textContent).toEqual('1000');
+    //expect(component.getPoupanca).toEqual(1000);
+    //expect(component.getCarteira).toEqual(3000);
+    //fixture.debugElement.nativeElement.querySelector("depositar").click();
+  });
+
+
 });
