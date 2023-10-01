@@ -1,0 +1,7 @@
+<h1>Investimentos</h1>
+
+<ul>
+    <li *ngFor="let items of investments" class="list-item">
+        {{ items.name }} - {{ items.value | currency:'BRL':'symbol':'1.2-2' }}
+    </li>
+</ul>

@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'banking',
     loadChildren: () =>
-      import('../app/shared/shared/shared.module').then((m) => m.SharedModule),
+      import('../app/shared/shared.module').then((m) => m.SharedModule),
   },
 ];
 
