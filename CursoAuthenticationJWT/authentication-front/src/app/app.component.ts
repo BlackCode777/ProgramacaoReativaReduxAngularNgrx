@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="container">
-      <a [routerLink]="['admin']">Admin</a>
+      <!-- <a [routerLink]="['admin']">Admin</a> -->
       <router-outlet></router-outlet>
     </div>
   `,
