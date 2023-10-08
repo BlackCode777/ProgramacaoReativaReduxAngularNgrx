@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "teste-unitario": {
+    "authentication-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/teste-unitario",
+            "outputPath": "dist/authentication-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,7 +30,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -66,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "teste-unitario:build:production"
+              "browserTarget": "authentication-front:build:production"
             },
             "development": {
-              "browserTarget": "teste-unitario:build:development"
+              "browserTarget": "authentication-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "teste-unitario:build"
+            "browserTarget": "authentication-front:build"
           }
         },
         "test": {
@@ -94,7 +93,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -102,8 +100,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "3e05f6b9-dab0-48e2-b1f2-1451027ed1ed"
   }
 }

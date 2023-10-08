@@ -3,12 +3,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "npm start",
-      "name": "Run npm start",
-      "request": "launch",
-      "type": "node-terminal"
-    },
-    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
