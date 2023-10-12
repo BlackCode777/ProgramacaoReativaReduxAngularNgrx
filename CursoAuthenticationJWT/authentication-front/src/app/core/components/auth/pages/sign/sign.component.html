@@ -1,18 +1,19 @@
 <div class="container">
     <img src="assets/Angular.png" alt="logo">
 
-    <form>
+    <form [formGroup]="formAuth" (ngSubmit)="submitForm()"> <!-- passo - 1 - encapsula todos os dados do formulario aplicando validações e submetendo para salvar -->
         <h2>Sign in</h2>
+
         <label class="input-field">
             <img src="assets/Vector.svg" alt="user">
-            <input type="email" placeholder="E-mail" required>
+            <input type="email" placeholder="E-mail" required formControlName="email"> <!-- passo - 2 - valida o campo email-->
         </label>
 
         <label class="input-field">
             <img src="assets/cadeado.svg" alt="lock">
-            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Password" required formControlName="password"> <!-- passo - 3 - valida o campo password -->
         </label>
-        <button class="btn-vermelho">Sign in</button>
+        <button class="btn-vermelho" [disabled]="formAuth.invalid">Sign in</button> <!-- passo - 4 - se os valores de email e password continuarem invpalidos o botão fica desabilitado -->
     </form>
 
     <!--ngIf pra esconder-->
