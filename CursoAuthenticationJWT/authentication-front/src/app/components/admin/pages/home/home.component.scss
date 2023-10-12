@@ -1,0 +1,24 @@
+// imoprrtando variaveis do arquivo _variables.scss
+@import './src/scss/base/variables';
+
+
+:host{
+    strong{
+        margin-top: 30px;
+        color: $vermelho;
+        font-size: 1.5rem;
+    }
+    button{
+        margin-top: 50px;
+        width: 100%;
+        height: 50px;
+        border: none;
+        background-color: $vermelho;
+        color: $branco;
+        font-size: 1.5rem;
+        font-weight: 300;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        
+    }
+}
