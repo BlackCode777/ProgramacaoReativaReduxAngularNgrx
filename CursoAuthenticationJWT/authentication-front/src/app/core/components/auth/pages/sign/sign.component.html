@@ -1,3 +1,23 @@
+<div class="container">
+    <img src="assets/Angular.png" alt="logo">
 
+    <form>
+        <h2>Sign in</h2>
+        <label class="input-field">
+            <img src="assets/Vector.svg" alt="user">
+            <input type="email" placeholder="E-mail" required>
+        </label>
 
-<p>sign works!</p>
+        <label class="input-field">
+            <img src="assets/cadeado.svg" alt="lock">
+            <input type="password" placeholder="Password">
+        </label>
+        <button class="btn-vermelho">Sign in</button>
+    </form>
+
+    <!--ngIf pra esconder-->
+    <span *ngIf="false" style="color: crimson;">
+        <p>Usuário ou senha incorreta!</p>
+    </span>
+
+</div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ObjetoInterfaceMapdeDatas } from '../investments/model/objetoInterfaceMapdeDatas';
+import { MatTableDataSource } from '@angular/material/table';
 import { ListInvestmentsService } from '../investments/services/list-investments.service';
 
 @Component({
@@ -9,163 +9,131 @@ import { ListInvestmentsService } from '../investments/services/list-investments
 })
 export class BankingComponent {
   public agencia: number = 12554;
-  private poupanca: number = 1000;
-  private carteira: number = 3000;
 
   // criando uma variavel que recebe data
-  public displayedColumns: string[] = [
-    //'data',
-    'id',
-    'nome',
-    'quantidade',
-    'descricao',
-  ];
-  public dataSourceMapDatas: ObjetoInterfaceMapdeDatas[] = [];
-
-
-
-
+  public displayedColumns: string[] = ['servico','01/08','02/08','03/08','04/08','05/08','06/08','07/08'];
+  public dataSourceMapDatas: any = new MatTableDataSource();
+  
+  public displayedColumnsModificado: string[] = ['servico','01/08','02/08','03/08','04/08','05/08','06/08','07/08'];
+  public dataSourceMapDatasModificado: any = new MatTableDataSource();
+  dataSource: any;
 
   constructor(private investmentsService: ListInvestmentsService) {}
   ngOnInit() {
-    // 2º caso de uso
+    
+    this.investmentsService.getMapDatasModificado().subscribe((mapdatas: any) => {
+      let dataSourceArray: any[] = mapdatas;
+      console.log('this.dataSourceMapDatasModificado', dataSourceArray);
+      this.dataSourceMapDatas = new MatTableDataSource<any>(dataSourceArray);
 
-    const arrayDeDentro3 = ['Joana', 'Alves', 'Miranda'];
-    const arrayDeDentro2 = ['Simone', 'Ferreira', 'Andrade', arrayDeDentro3];
-    const arrayDeDentro = ['Anderson', 'Santos', 'Silva', arrayDeDentro2];
-    const array2 = [
-      [1, 2, 3],
-      ['a', 'b', 'c', arrayDeDentro],
-      [true, false, true],
+      console.log('this.dataSourceMapDatasModificado', this.dataSourceMapDatas);
+    }
+    );
+
+
+    //Testando com a nova tipagem
+    this.investmentsService
+      .getMapDatasModificado()
+      .subscribe((mapdatas: any) => {
+        let dataSourceArray: any[] = mapdatas;
+        console.log('this.dataSourceMapDatasModificado', dataSourceArray);
+        this.dataSourceMapDatasModificado = new MatTableDataSource<any>(dataSourceArray);
+
+        console.log('this.dataSourceMapDatasModificado', this.dataSourceMapDatasModificado);
+
+    });
+
+
+
+    // Assim funciona
+    this.dataSource = [
+      {
+        servico: 'detran_cnh_renovação',
+        '01/08': 0,
+        '02/08': 0,
+        '03/08': 0,
+        '04/08': 12,
+        '05/08': 32,
+        '06/08': 45,
+        '07/08': 56,
+      },
+      {
+        servico: 'detran_acompanhamento_cnh',
+        '01/08': 0,
+        '02/08': 0,
+        '03/08': 0,
+        '04/08': 25,
+        '05/08': 45,
+        '06/08': 56,
+        '07/08': 67,
+      },
+      {
+        servico: 'cdhu_acompanhamento_imovel',
+        '01/08': 0,
+        '02/08': 0,
+        '03/08': 0,
+        '04/08': 36,
+        '05/08': 67,
+        '06/08': 78,
+        '07/08': 89,
+      },
+      {
+        servico: 'aducacao_carteirinha_escolar',
+        '01/08': 0,
+        '02/08': 0,
+        '03/08': 0,
+        '04/08': 45,
+        '05/08': 78,
+        '06/08': 89,
+        '07/08': 90,
+      },
+      {
+        servico: 'iirgd_primeira_via',
+        '01/08': 0,
+        '02/08': 0,
+        '03/08': 0,
+        '04/08': 78,
+        '05/08': 89,
+        '06/08': 90,
+        '07/08': 90,
+      },
     ];
+  }
+}
 
-    // Percorrendo o array da data - array2
-    for (let i = 0; i < array2[0].length; i++) {
-      console.log('array2[0][i]', array2[0][i]);
 
-      // Percorrendo array de dentro mapDatas - arrayDeDentro
-      for (let j = 0; j < array2[1].length; j++) {
-        console.log('array2[1][j] _ ', array2[1][j]);
 
-        // Percorrendo array de dentro mapDatas - arrayDeDentro2
-        if (Array.isArray(array2[1][3])) {
-          for (let k = 0; k < array2[1][3].length; k++) {
-            console.log('array2[1][3][k] _ ', array2[1][3][k]);
 
-            // Percorrendo array de dentro mapDatas - arrayDeDentro3
-            if (Array.isArray(array2[1][3][3])) {
-              for (let l = 0; l < array2[1][3][3].length; l++) {
-                console.log('array2[1][3][3][l] _ ', array2[1][3][3][l]);
-              }
-            }
+    /*
+    //console.log('this.dataSourceMapDatasPUSH()_', this.dataSourceMapDatas.push())
+     this.investmentsService
+       .getMapDatasModificado()
+       .subscribe((mapdatas: any) => {
+         let dataSourceArray: any[] = mapdatas;
+         console.log('this.dataSourceMapDatasModificado', dataSourceArray);
+         this.dataSourceMapDatasModificado = new MatTableDataSource<any>(dataSourceArray);
+     });
+    */
 
-          }
-        }
-      }
-    }
 
-    // Iterando neste array
-    for (const key in array2) {
-      if (array2.hasOwnProperty(key)) {
-        const element = array2[key];
-        console.log('element', element);
-      }
-    }
-
-    // 1º caso de uso
-    const array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-    // Iterando neste array
-    for (const key in array) {
-      if (array.hasOwnProperty(key)) {
-        const element = array[key];
-        console.log('element', element);
-      }
-    }
-    // Ou pode ser desta forma tb
-    for (let i = 0; i < array.length; i++) {
-      console.log('array[i]', array[i]);
-    }
-
+  /*
+  public getdados() {
     this.investmentsService
       .getMapDatas()
       .subscribe((mapdatas: ObjetoInterfaceMapdeDatas[]) => {
-        // mapdatas agora é um array array dataSourceArrayArray[][]
-        let dataSourceArrayArray: ObjetoInterfaceMapdeDatas[] = mapdatas;
-        let desindexados: ObjetoInterfaceMapdeDatas[] = dataSourceArrayArray; //.flat();
-        console.log('desindexados <><><> ', desindexados);
-
-        /*
-        
-        
-        this.dataSourceMapDatas = desindexados.map((mapdata: any) => {
-          console.log('mapdata ATRIBUIDO_', mapdata);
-          if (
-            mapdata &&
-            mapdata.data &&
-            mapdata.mapDatas &&
-            mapdata.mapDatas[mapdata.data]
-          ) {
-            console.log('mapdata ATRIBUIDO_NOIF_', mapdata);
-            // Verifique se this.dataSourceMapDatas não é nulo ou indefinido antes de prosseguir
-            if (this.dataSourceMapDatas) {
-              // Itere pelos objetos em this.dataSourceMapDatas
-              this.dataSourceMapDatas.forEach((item) => {
-                console.log('item dentro do ForEach_', item);
-                // Verifique se a propriedade "mapDatas" existe e é um objeto
-                if (item && item.data && typeof item.data === 'object') {
-                  // Itere pelas propriedades do objeto "mapDatas"
-                  for (const key in item.mapDatasObj2) {
-                    if (item.mapDatasObj2.hasOwnProperty(key)) {
-                      // Verifique se o valor da propriedade é um array
-                      if (Array.isArray(item.mapDatasObj2[key])) {
-                        // Converta o array em uma string JSON e atribua à mesma propriedade
-                        //item.mapDatasObj2[key] = JSON.stringify(item.mapDatas[key]);
-                      }
-                    }
-                  }
-                }
-              });
-            }
-            // TRECHO DE CODIGO CONDENADO - Os atributos estão se peerdendo
-            // let mapDataDesindexada: any = {
-            //   data: mapdata.data,
-            //   mapDatas: {
-            //     [mapdata.data]: mapdata.mapDatas[mapdata.data].map(
-            //       (mapdata_2: any) => {
-            //         return {
-            //           id: mapdata_2.id,
-            //           nome: mapdata_2.nome,
-            //           quantidade: mapdata_2.quantidade,
-            //           descricao: mapdata_2.descricao,
-            //         };
-            //       }
-            //     ),
-            //   },
-            // };
-            //console.log('mapDataDesindexada', mapDataDesindexada);
-            //return mapDataDesindexada;
+        let dataSourceArray: ObjetoInterfaceMapdeDatas[] = mapdatas;
+        for (let key in dataSourceArray) {
+          let dataSourceArrayKey = dataSourceArray[key];
+          for (let key2 in dataSourceArrayKey) {
+            this.dataSourceMapDatas = [dataSourceArrayKey[key2]];
+            this.dataSourceMapDatas.push([[dataSourceArrayKey[key2]]]);            
           }
-        });
-
-        
-        */
-        return this.dataSourceMapDatas;
+        }
       });
   }
-
-  /*  
-  mapdata.mapDatas.map(
-                  (mapdata2: ObjetoInterfaceMapdeDatas_2) => {
-                    return {
-                      id: mapdata2.id,
-                      nome: mapdata2.nome,
-                      quantidade: mapdata2.quantidade,
-                      descricao: mapdata2.descricao,
-                    };
-                  }
-                ),  
   */
 
+/*
   get getPoupanca(): number {
     return this.poupanca;
   }
@@ -191,7 +159,72 @@ export class BankingComponent {
     this.carteira -= depositar;
     return (this.poupanca += depositar);
   }
-}
+*/
+
+
+
+/*
+
+let primeiroMap: ObjetoInterfaceMapdeDatas[] = this.dataSourceMapDatas[data1][0];
+
+          //console.log('primeiroMap', primeiroMap);
+          // Aqui estou com objeto undefined
+          // if(primeiroMap && primeiroMap.length > 0 && primeiroMap[0] != null && primeiroMap[0] != undefined) {
+
+          for (let data2 = 0; data2 < primeiroMap.length; data2++) { // Aqui
+
+            console.log('primeiroMap[data2]', primeiroMap[data2]);
+            
+            let segundoMap: ObjetoInterfaceMapdeDatas = primeiroMap[data2];
+
+          }
+
+*/
+
+
+/*
+        this.dataSourceMapDatas = desindexados.map((mapdata: any) => {
+          console.log('mapdata ATRIBUIDO_', mapdata);
+          if (
+            mapdata &&
+            mapdata.data &&
+            mapdata.mapDatas &&
+            mapdata.mapDatas[mapdata.data]
+          ) {
+            console.log('mapdata ATRIBUIDO_NOIF_', mapdata);
+            // Verifique se this.dataSourceMapDatas não é nulo ou indefinido antes de prosseguir
+            if (this.dataSourceMapDatas) {
+              
+              this.dataSourceMapDatas.forEach((item) => {
+                console.log('item dentro do ForEach_', item);
+                
+                if (item && item.data && typeof item.data === 'object') {
+                  
+                  for (const key in item.mapDatasObj2) {
+                    if (item.mapDatasObj2.hasOwnProperty(key)) {
+
+                      if (Array.isArray(item.mapDatasObj2[key])) {
+                        
+                        item.mapDatasObj2[key] = JSON.stringify(item.mapDatas[key]);
+                      }
+                    }
+                  }
+                }
+              });
+            }
+          }
+        });
+        */
+    //return this.dataSourceMapDatas;
+    //});
+
+
+
+
+
+
+
+
 
 /*
 

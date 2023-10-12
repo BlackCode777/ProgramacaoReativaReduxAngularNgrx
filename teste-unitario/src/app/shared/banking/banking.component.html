@@ -1,60 +1,47 @@
-<!-- <p>
-    <strong>Anderosn sua Agencia:</strong> 
-    {{agencia | currency:'BRL'}}
-</p>
+<table mat-table [dataSource]="dataSourceMapDatasModificado" class="mat-elevation-z8">
 
-<p>
-    Poupança: R$ <span id="get-poupanca">{{ getPoupanca }}</span>
-    <input id="input-sacar" type="text" #sacar >
-    <button id="sacar" (click)="setSacar(sacar.value)">Sacar</button>
-</p>
+  <ng-container *ngFor="let column of displayedColumnsModificado; let i = index" [matColumnDef]="column" >
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+  </ng-container>
 
-<p>
-    Carteira: R$ <span id="get-carteira">{{ getCarteira }}</span>
-    <input id="input-depositar" type="text" #depositar >
-    <button id="depositar" (click)="setDepositar(depositar.value)">Depositar</button>
-</p> -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsModificado"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsModificado"></tr>
 
-<div>
-    <!-- <lu>
-        <li *ngFor="let mapData of mapDatas">
-            <span>{{mapData.id}}</span>
-            <span>{{mapData.nome}}</span>
-            <span>{{mapData.quantidade}}</span> 
-        </li>
-    </lu> -->
-    
-  <table mat-table [dataSource]="dataSourceMapDatas" class="mat-elevation-z8">
-    <!-- <ng-container matColumnDef="data">
-      <th mat-header-cell *matHeaderCellDef>data</th>
-        <td mat-cell *matCellDef="let element">{{ element.data }}</td>
-    </ng-container> -->
+</table>
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>id</th>
-        <td mat-cell *matCellDef="let element">{{ element.mapDatas.id }}</td>
-    </ng-container>
+<br><br>
 
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef>nome</th>
-        <td mat-cell *matCellDef="let element">{{ element.mapDatas.nome }}</td>
-    </ng-container>
+<table mat-table [dataSource]="dataSourceMapDatas" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="quantidade">
-      <th mat-header-cell *matHeaderCellDef>quantidade</th>
-      <td mat-cell *matCellDef="let element">{{ element.mapDatas.quantidade }}</td>
-    </ng-container>
+  <ng-container *ngFor="let column of displayedColumns; let i = index" [matColumnDef]="column" >
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="descricao">
-      <th mat-header-cell *matHeaderCellDef>descricao</th>
-      <td mat-cell *matCellDef="let element">{{ element.mapDatas.descricao }}</td>
-    </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-</div>
+</table>
 
-<hr />
+<br><br>
 
-<!-- <app-list></app-list> -->
+<table mat-table [dataSource]="dataSourceMapDatas" class="mat-elevation-z8">
+
+  <!-- <ng-container *ngFor="let column of displayedColumns; let i = index" [matColumnDef]="column" > -->
+  <ng-container matColumnDef="servico" > 
+    <th mat-header-cell *matHeaderCellDef>servico</th>
+    <td mat-cell *matCellDef="let element">{{ element.servico }}</td>
+  </ng-container>
+
+  <!-- <ng-container *ngFor="let column of displayedColumns; let i = index" [matColumnDef]="column" > -->
+  <ng-container matColumnDef="dadosPorDia" > 
+    <th mat-header-cell *matHeaderCellDef>dadosPorDia</th>
+    <td mat-cell *matCellDef="let element">{{ element.dadosPorDia.data }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+</table>
+

@@ -1,6 +1,7 @@
 {
   "mapDatas": {
-                "28/09": [
+
+                "data": [
                             {
                               "id": 1,
                               "nome": "atualizacao_car",
@@ -20,87 +21,8 @@
                               "descricao": "cancelar_agendamento"
                             }
                   ],
-                "29/09": [
-                              {
-                                "id": 1,
-                                "nome": "atualizacao_car",
-                                "quantidade": 36660,
-                                "descricao": "atualizacao_car"
-                              },
-                              {
-                                "id": 2,
-                                "nome": "bpp_carteira_trabalho_ppt",
-                                "quantidade": 731,
-                                "descricao": "Carteira de Trabalho"
-                              },
-                              {
-                                "id": 3,
-                                "nome": "cancelar_agendamento",
-                                "quantidade": 55984,
-                                "descricao": "cancelar_agendamento"
-                              }
-                ],
-                "30/09": [
-                              {
-                                "id": 1,
-                                "nome": "atualizacao_car",
-                                "quantidade": 36660,
-                                "descricao": "atualizacao_car"
-                              },
-                              {
-                                "id": 2,
-                                "nome": "bpp_carteira_trabalho_ppt",
-                                "quantidade": 731,
-                                "descricao": "Carteira de Trabalho"
-                              },
-                              {
-                                "id": 3,
-                                "nome": "cancelar_agendamento",
-                                "quantidade": 55984,
-                                "descricao": "cancelar_agendamento"
-                              }
-                ],
-                "01/10": [
-                              {
-                                "id": 1,
-                                "nome": "atualizacao_car",
-                                "quantidade": 36660,
-                                "descricao": "atualizacao_car"
-                              },
-                              {
-                                "id": 2,
-                                "nome": "bpp_carteira_trabalho_ppt",
-                                "quantidade": 731,
-                                "descricao": "Carteira de Trabalho"
-                              },
-                              {
-                                "id": 3,
-                                "nome": "cancelar_agendamento",
-                                "quantidade": 55984,
-                                "descricao": "cancelar_agendamento"
-                              }
-                ],
-                "02/10": [
-                              {
-                                "id": 1,
-                                "nome": "atualizacao_car",
-                                "quantidade": 36660,
-                                "descricao": "atualizacao_car"
-                              },
-                              {
-                                "id": 2,
-                                "nome": "bpp_carteira_trabalho_ppt",
-                                "quantidade": 731,
-                                "descricao": "Carteira de Trabalho"
-                              },
-                              {
-                                "id": 3,
-                                "nome": "cancelar_agendamento",
-                                "quantidade": 55984,
-                                "descricao": "cancelar_agendamento"
-                              }
-                ],
-                "TOTAL": [
+                
+                "dataTotal": [
                               {
                                 "id": 1,
                                 "nome": "atualizacao_car",
@@ -1823,5 +1745,5 @@
                                 "descricao": "consulta situacao eleitoral"
                               }
                 ]
-            }
+  }
 }
