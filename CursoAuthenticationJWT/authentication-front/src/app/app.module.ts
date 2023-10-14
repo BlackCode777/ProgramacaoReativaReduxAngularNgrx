@@ -13,6 +13,7 @@ import { AuthRoutingModule } from './core/components/auth/auth-routing.module';
     AppComponent
   ],
   imports: [
+    ReactiveFormsModule,
     HttpClientModule,
     AuthRoutingModule,
     AdminModule,

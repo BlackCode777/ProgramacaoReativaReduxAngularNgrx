@@ -16,9 +16,9 @@
         <button class="btn-vermelho" [disabled]="formAuth.invalid">Sign in</button> <!-- passo - 4 - se os valores de email e password continuarem invpalidos o botão fica desabilitado -->
     </form>
 
-    <!--ngIf pra esconder-->
-    <span *ngIf="true" class="msg-error">
-        <p>Usuário ou senha incorreta!</p>
+    <!-- passoService - 7 - setando a variavel de mensagem de erro mgsError -->
+    <span class="msg-error" *ngIf="mgsError"> <!-- ngIf="mgsError"-->
+        <p>{{ mgsError }}</p>
     </span>
 
 </div>

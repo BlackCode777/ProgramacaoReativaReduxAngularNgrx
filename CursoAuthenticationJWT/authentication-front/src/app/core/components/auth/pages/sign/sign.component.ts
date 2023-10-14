@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-sign',
@@ -13,19 +14,35 @@ export class SignComponent {
     password: ['', [Validators.required]], //, Validators.minLength(6)
   });
 
-  constructor(private formBuilder: FormBuilder) {} // passo - 2 - chamar variavel do tipo FormBuilder
+  // passoService - 7 - criar variavel para receber mensagem de erro
+  public mgsError: string = '';
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService // passoService - 4 - chamar variavel do tipo AuthService
+  ) {} // passo - 2 - chamar variavel do tipo FormBuilder
   ngOnInit() {}
 
   // passo - 3 - criar metodo para pegar os valores do formulario
   public submitForm(): void {
-    console.log(this.formAuth.value);
+    console.log(this.formAuth);
 
     if (this.formAuth.valid) {
       console.log('Formulário válido');
 
-      // passo - 4 - criar metodo para salvar os valores do formulario c/service
+      // passoService - 5 - chamar metodo para validar e salvar
+      this.authService
+        .sign({
+          email: this.formAuth.value.email,
+          password: this.formAuth.value.password,
+
+          // passoService - 6 - chamando subscribe para monitorar nossas requisições
+        })
+        .subscribe({
+          next: (res) => res,
+          error: (e: any) => (this.mgsError = e.erro),
+        });
 
     }
-
   }
 }
