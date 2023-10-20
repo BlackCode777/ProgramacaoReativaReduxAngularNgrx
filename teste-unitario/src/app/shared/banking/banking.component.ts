@@ -30,7 +30,6 @@ export class BankingComponent {
     }
     );
 
-
     //Testando com a nova tipagem
     this.investmentsService
       .getMapDatasModificado()
@@ -42,8 +41,6 @@ export class BankingComponent {
         console.log('this.dataSourceMapDatasModificado', this.dataSourceMapDatasModificado);
 
     });
-
-
 
     // Assim funciona
     this.dataSource = [
