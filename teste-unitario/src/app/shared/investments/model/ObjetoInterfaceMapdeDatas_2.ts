@@ -1,6 +1,8 @@
 export interface ObjetoInterfaceMapdeDatas_2 {
-  id: number;
-  nome: string;
-  quantidade: number;
-  descricao: string;
+  servico: string;
+  dadosPorDia: DataPorDia[];
+}
+export interface DataPorDia {
+  data: string;
+  valor: number;
 }

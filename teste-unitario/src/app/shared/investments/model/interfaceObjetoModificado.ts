@@ -1,7 +1,13 @@
 export interface InterfaceObjetoModificadoComDatas {
   servico: string;
-  dadosPorDia: { [data: string]: number[] };
+  dadosPorDia: DataPorDia[];
 }
+
+export interface DataPorDia {
+  data: string;
+  valor: number;
+}
+
 /*
 export interface InterfaceObjetoModificadoComDatas {
   servico: string;

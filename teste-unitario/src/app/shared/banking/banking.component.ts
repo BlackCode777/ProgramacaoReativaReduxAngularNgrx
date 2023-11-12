@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { InterfaceObjetoModificadoComDatas } from '../investments/model/interfaceObjetoModificado';
 import { ListInvestmentsService } from '../investments/services/list-investments.service';
 
 @Component({
@@ -8,97 +9,213 @@ import { ListInvestmentsService } from '../investments/services/list-investments
   styleUrls: ['./banking.component.scss'],
 })
 export class BankingComponent {
-  public agencia: number = 12554;
+  public dataSourceMapDatas: MatTableDataSource<InterfaceObjetoModificadoComDatas> =
+    new MatTableDataSource<InterfaceObjetoModificadoComDatas>();
+  public dias: string[] = [
+    '01/08',
+    '02/08',
+    '03/08',
+    '04/08',
+    '05/08',
+    '06/08',
+    '07/08',
+    '08/08',
+    '09/08',
+    '10/08',
+    '11/08',
+    '12/08',
+    '13/08',
+    '14/08',
+    '15/08',
+    '16/08',
+    '17/08',
+    '18/08',
+    '19/08',
+    '20/08',
+    '21/08',
+    '22/08',
+    '23/08',
+    '24/08',
+    '25/08',
+    '26/08',
+    '27/08',
+    '28/08',
+    '29/08',
+    '30/08',
+    '31/08',
+  ];
 
-  // criando uma variavel que recebe data
-  public displayedColumns: string[] = ['servico','01/08','02/08','03/08','04/08','05/08','06/08','07/08'];
-  public dataSourceMapDatas: any = new MatTableDataSource();
-  
-  public displayedColumnsModificado: string[] = ['servico','01/08','02/08','03/08','04/08','05/08','06/08','07/08'];
-  public dataSourceMapDatasModificado: any = new MatTableDataSource();
-  dataSource: any;
+  itensDisponiveis: { id: number; nome: string }[] = [
+    { id: 1, nome: 'Item 1' },
+    { id: 2, nome: 'Item 2' },
+    { id: 3, nome: 'Item 3' },
+  ];
+
+  itensSelecionados: { id: number; nome: string }[] = [];
 
   constructor(private investmentsService: ListInvestmentsService) {}
   ngOnInit() {
-    
-    this.investmentsService.getMapDatasModificado().subscribe((mapdatas: any) => {
-      let dataSourceArray: any[] = mapdatas;
-      console.log('this.dataSourceMapDatasModificado', dataSourceArray);
-      this.dataSourceMapDatas = new MatTableDataSource<any>(dataSourceArray);
-
-      console.log('this.dataSourceMapDatasModificado', this.dataSourceMapDatas);
-    }
-    );
-
-    //Testando com a nova tipagem
     this.investmentsService
       .getMapDatasModificado()
       .subscribe((mapdatas: any) => {
-        let dataSourceArray: any[] = mapdatas;
-        console.log('this.dataSourceMapDatasModificado', dataSourceArray);
-        this.dataSourceMapDatasModificado = new MatTableDataSource<any>(dataSourceArray);
+        const dadosFormatados: any = [];
 
-        console.log('this.dataSourceMapDatasModificado', this.dataSourceMapDatasModificado);
+        mapdatas.forEach((item: any) => {
+          const servico = item.servico;
+          const dadosPorDia = [];
+          for (const key in item) {
+            if (key !== 'servico') {
+              dadosPorDia.push({ data: key, valor: item[key] });
+            }
+          }
+          dadosFormatados.push({ servico, dadosPorDia });
+        });
 
+        this.dataSourceMapDatas = dadosFormatados;
+      });
+  }
+
+  adicionarItem(item: any) {
+    if (!this.itensSelecionados.includes(item)) {
+      this.itensSelecionados.push(item);
+    }
+  }
+
+  removerItem(item: any) {
+    this.itensSelecionados = this.itensSelecionados.filter((i) => i !== item);
+  }
+
+  adicionarItensSelecionados() {
+    // Implemente a lógica para adicionar os itens selecionados na sua lógica de negócios aqui
+    let itensSelecionados = this.itensSelecionados;
+    let itensDisponiveis = this.itensDisponiveis;
+    let itensDisponiveisFiltrados = itensDisponiveis.filter(
+      (item) => !itensSelecionados.includes(item)
+    );
+    this.itensDisponiveis = itensDisponiveisFiltrados;
+  }
+
+  // Criar função para adicionar todos os itens selecionados para a lista de uma só vez
+  addTodosOsItensParaListagemDeItens() {
+    let itensSelecionados = this.itensSelecionados;
+    let itensDisponiveis = this.itensDisponiveis;
+    // Se todos os itens estiverem selecionados então adiciona itens a lista de itens disponiveis
+    if (itensSelecionados.length === itensSelecionados.length) {
+      this.itensDisponiveis = itensDisponiveis;
+    }
+  }
+
+  removerItensSelecionados() {
+    // Implemente a lógica para remover os itens selecionados na sua lógica de negócios aqui
+    let itensSelecionados = this.itensSelecionados;
+    let itensDisponiveis = this.itensDisponiveis;
+    let itensSelecionadosFiltrados = itensSelecionados.filter(
+      (item) => !itensDisponiveis.includes(item)
+    );
+    this.itensSelecionados = itensSelecionadosFiltrados;
+  }
+
+  SalvarPerfisEscolhidos(){}
+
+  /*
+  gpt estou tendo este erro: [Property 'id' does not exist on type 'never'.ts(2339)],
+  ao implementar o método removerItem() e atribuirItem() na classe BankingComponent,
+  como posso resolver este problema?
+  */
+
+  public funcPercorreSentencaDeString(sentenca: string): any {
+    let sentencaArray: string[] = sentenca.split('');
+    let sentencaArrayOrdenada: string[] = sentencaArray.sort();
+    let sentencaArrayOrdenadaString: string = sentencaArrayOrdenada.join('');
+    let sentencaArrayOrdenadaStringArray: string[] =
+      sentencaArrayOrdenadaString.split('');
+    let sentencaArrayOrdenadaStringArrayObjeto: any[] = [];
+
+    for (let i = 0; i < sentencaArrayOrdenadaStringArray.length; i++) {
+      let letra = sentencaArrayOrdenadaStringArray[i];
+      let contador = 0;
+      for (let j = 0; j < sentencaArrayOrdenadaStringArray.length; j++) {
+        if (letra === sentencaArrayOrdenadaStringArray[j]) {
+          contador++;
+        }
+      }
+      sentencaArrayOrdenadaStringArrayObjeto.push({ letra, contador });
+    }
+    return sentencaArrayOrdenadaStringArrayObjeto;
+  }
+
+  public getDiasValores(element: any, dia: string): number {
+    let valor: number = 0;
+    element.dadosPorDia.forEach((item: any) => {
+      if (item.data === dia) {
+        valor = item.valor;
+      }
     });
-
-    // Assim funciona
-    this.dataSource = [
-      {
-        servico: 'detran_cnh_renovação',
-        '01/08': 0,
-        '02/08': 0,
-        '03/08': 0,
-        '04/08': 12,
-        '05/08': 32,
-        '06/08': 45,
-        '07/08': 56,
-      },
-      {
-        servico: 'detran_acompanhamento_cnh',
-        '01/08': 0,
-        '02/08': 0,
-        '03/08': 0,
-        '04/08': 25,
-        '05/08': 45,
-        '06/08': 56,
-        '07/08': 67,
-      },
-      {
-        servico: 'cdhu_acompanhamento_imovel',
-        '01/08': 0,
-        '02/08': 0,
-        '03/08': 0,
-        '04/08': 36,
-        '05/08': 67,
-        '06/08': 78,
-        '07/08': 89,
-      },
-      {
-        servico: 'aducacao_carteirinha_escolar',
-        '01/08': 0,
-        '02/08': 0,
-        '03/08': 0,
-        '04/08': 45,
-        '05/08': 78,
-        '06/08': 89,
-        '07/08': 90,
-      },
-      {
-        servico: 'iirgd_primeira_via',
-        '01/08': 0,
-        '02/08': 0,
-        '03/08': 0,
-        '04/08': 78,
-        '05/08': 89,
-        '06/08': 90,
-        '07/08': 90,
-      },
-    ];
+    return valor;
   }
 }
 
 
+
+
+// public agencia: number = 12554;
+  // public dataSourceDatePicker = [{ date: '2023-10-23', value: 15 },{ date: '2023-10-24', value: 23 }];
+  // public displayedColumnsDatePicker: string[] = ['data', 'value'];
+  // dataSourceDatePickerTable = new MatTableDataSource(this.dataSourceDatePicker);
+  // public displayedColumns: string[] = [  'servico','01/08','02/08','03/08','04/08','05/08','06/08','07/08'];
+  // public displayedColumnsModificado: string[] = ['servico','01/08','02/08','03/08','04/08','05/08','06/08','07/08'];
+  // public dataSourceMapDatasModificado: any = new MatTableDataSource();
+  // dataSource: any;
+
+  /*
+
+  removerItem() {
+    this.listaDeItensDisponiveis.push(
+      ...this.listaDeItensSelecionados.filter((item: { id: any, nome: any }) =>
+        this.itensSelecionados.includes(item.id, item.nome)
+      )
+    );
+    this.listaDeItensSelecionados = this.listaDeItensSelecionados.filter(
+      (item: { id: any }) => !this.itensSelecionados.includes(item.id)
+    );
+    this.itensSelecionados = [];
+  }
+
+  atribuirItem() {
+    this.listaDeItensSelecionados.push(
+      ...this.listaDeItensDisponiveis.filter((item: { id: any; nome: any }) =>
+        this.itensDisponiveis.includes(item.id)
+      )
+    );
+
+    this.listaDeItensDisponiveis = this.listaDeItensDisponiveis.filter(
+      (item: { id: any; nome: any }) => !this.itensDisponiveis.includes(item.id)
+    );
+    this.itensDisponiveis = [];
+  }
+
+
+    const dadosFormatados = [];/
+    seusDados.forEach((item) => {
+      const servico = item.servico;
+      const dadosPorDia = [];
+      for (const key in item) {
+        if (key !== 'servico') {
+          dadosPorDia.push({ data: key, valor: item[key] });
+        }
+      }
+      dadosFormatados.push({ servico, dadosPorDia });
+    });
+
+    criar uma variavel para receber um array de dias e valores e depois fazer um for 
+    para percorrer esse array com dias e valores  onde 
+    {data: "01/08", valor: 0}
+
+    public dias: string[] = ['01/08','02/08','03/08','04/08','05/08','06/08','07/08', '08/08', '09/08', '10/08', 
+                              '11/08', '12/08', '13/08', '14/08', '15/08', '16/08', '17/08', '18/08', '19/08', '20/08', 
+                              '21/08', '22/08', '23/08', '24/08', '25/08', '26/08', '27/08', '28/08', '29/08', '30/08', '31/08'
+                            ];
+    */
 
 
     /*
